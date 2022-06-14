@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Showcase rclone check command
+# This basically copies gdrive:ronaldstouffer/Becki_Port_april2021/* to aws:test-bucket/hungtr/*
+
+# We hope to derive good practices by making errors in the following script.
 
 source .env
 
@@ -51,10 +54,10 @@ rclone check ${GDRIVE_REMOTE}/$TEST_FOLDER ${LOCAL_ROOT} --missing-on-src gdrive
 # aws:some_different_root versus gdrive:/some/different/root
 # Comparing against each other is now a much easier task.
 
-## BAD
+## BAD: check gives all difference because of different pathnames
 rclone check ${GDRIVE_REMOTE}/$TEST_FOLDER ${AWS_REMOTE} --missing-on-dst gdrive_aws_dest.txt &
 
-## BAD
+## BAD: all files are different because of different pathnames
 rclone check ${GDRIVE_REMOTE}/$TEST_FOLDER ${AWS_REMOTE} --missing-on-src gdrive_aws_src.txt &
 
 echo "Waiting for tasks to be done"
