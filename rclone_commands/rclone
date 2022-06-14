@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# This is required for the notebooks because magic commands are performed
+# using: /bin/bash <cmd>
+
+# rclone is a binary, /bin/bash rclone yields error.
+rclone $@
